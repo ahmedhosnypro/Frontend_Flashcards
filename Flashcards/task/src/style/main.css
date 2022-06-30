@@ -19,35 +19,70 @@ header {
     font-weight: 900;
     font-size: 4rem;
     margin: 0 0 1rem 0;
-    background: #1a6762;
+    background: linear-gradient(#b69575, #a18161, #866b4c);
     border: 1px solid #1a6762;
     border-radius: 1rem;
     padding: .25rem 1.25rem;
-    text-align: center;
-
+    text-align: start;
 }
 
 #board {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 10px;
-    justify-content: center;
+    height: 50vh;
+    width: 50vmax;
+    perspective: 1000px
 }
 
-.question {
-    background: #1a6762;
+.card-container {
+    width: 12vmax;
+    height: 12vmax;
+}
+
+.card {
+    width: 12vmax;
+    height: 12vmax;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.front, .back {
+    position: absolute;
     border: 1px solid #1f292e;
-
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-start;
-    align-items: center;
-
-    width: 10vmax;
-    height: 10vmax;
-    padding: .5rem;
+    width: inherit;
+    height: inherit;
     border-radius: 5px;
+
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: auto;
+
+}
+
+.front {
+    background: linear-gradient(#a9835b, #836039, #8a522a);
+    color: #211d0d;
+    backface-visibility: hidden;
+    z-index: 2;
+}
+
+.card {
+    transition: all 1s linear;
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+
+}
+
+.back {
+    background: linear-gradient(#28A583, #106766, #004746);
+    z-index: 1;
+    transform: rotateY(180deg);
+    color: #ffffff;
 }
 
 .question p {
